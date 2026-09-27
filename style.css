@@ -1,0 +1,588 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, "Segoe UI", sans-serif;
+}
+
+
+/* =====================================
+   HALAMAN 1
+   AMPLOP
+   ===================================== */
+
+.page-one {
+    min-height: 100vh;
+    background: #f4e8df;
+}
+
+.envelope-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+}
+
+#open-envelope {
+    display: none;
+}
+
+.envelope {
+    width: 380px;
+    height: 450px;
+
+    position: relative;
+
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.envelope-front,
+.envelope-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    border-radius: 18px;
+    border: 2px solid #c8a28b;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transition: transform 0.8s ease;
+}
+
+
+/* DEPAN */
+
+.envelope-front {
+    background: #fffaf6;
+
+    transform: rotateY(0deg);
+}
+
+.envelope-front h1 {
+    font-size: 29px;
+    line-height: 1.4;
+    color: #6e4d41;
+}
+
+.click-info {
+    margin-top: 30px;
+    color: #a27c6b;
+    font-size: 14px;
+}
+
+
+/* BELAKANG */
+
+.envelope-back {
+    background: #ead4c5;
+
+    transform: rotateY(180deg);
+}
+
+.envelope-back h2 {
+    font-size: 30px;
+    line-height: 1.4;
+    color: #67473c;
+}
+
+.envelope-back p {
+    margin: 20px 0;
+    color: #806255;
+}
+
+
+/* MEMBALIK */
+
+#open-envelope:checked + .envelope .envelope-front {
+    transform: rotateY(-180deg);
+}
+
+#open-envelope:checked + .envelope .envelope-back {
+    transform: rotateY(0deg);
+}
+
+
+/* HATI */
+
+.heart {
+    font-size: 50px;
+    color: #a56b5a;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   TOMBOL
+   ===================================== */
+
+.next-button {
+    display: inline-block;
+
+    padding: 12px 28px;
+
+    background: #745144;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.next-button:hover {
+    background: #563a31;
+}
+
+
+/* =====================================
+   HALAMAN 2
+   GELAP
+   ===================================== */
+
+.dark-page {
+    background: #000;
+    color: white;
+}
+
+.candle-page {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* TEKS */
+
+.dark-text {
+    text-align: center;
+    margin-bottom: 70px;
+
+    animation: appear 2s ease;
+}
+
+.dark-text h1 {
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.dark-text p {
+    margin-top: 15px;
+    color: #cfcfcf;
+    font-size: 17px;
+}
+
+
+/* =====================================
+   LILIN
+   ===================================== */
+
+.candle-link {
+    text-decoration: none;
+}
+
+.candle {
+    position: relative;
+
+    width: 100px;
+    height: 180px;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+/* BADAN LILIN */
+
+.candle-body {
+    position: absolute;
+
+    bottom: 15px;
+
+    width: 70px;
+    height: 125px;
+
+    background: linear-gradient(
+        to right,
+        #e7d1b9,
+        #fff4e5,
+        #d8b99d
+    );
+
+    border-radius: 10px 10px 5px 5px;
+
+    box-shadow:
+        0 0 25px rgba(255, 180, 90, 0.1);
+}
+
+
+/* GARIS LILIN */
+
+.candle-line {
+    width: 45px;
+    height: 1px;
+
+    background: rgba(130, 90, 60, 0.25);
+
+    margin: 35px auto 0;
+}
+
+
+/* SUMBU */
+
+.wick {
+    position: absolute;
+
+    bottom: 137px;
+
+    width: 5px;
+    height: 18px;
+
+    background: #38261f;
+
+    z-index: 3;
+}
+
+
+/* API */
+
+.flame {
+    position: absolute;
+
+    bottom: 145px;
+
+    width: 32px;
+    height: 48px;
+
+    background: #ffb52e;
+
+    border-radius: 50% 50% 50% 50%;
+
+    transform: rotate(45deg);
+
+    box-shadow:
+        0 0 15px #ff9d00,
+        0 0 35px rgba(255, 150, 0, 0.7);
+
+    animation: flameMove 0.8s infinite alternate;
+
+    z-index: 4;
+}
+
+.flame-inner {
+    position: absolute;
+
+    width: 15px;
+    height: 25px;
+
+    background: #fff4a8;
+
+    border-radius: 50%;
+
+    bottom: 7px;
+    left: 5px;
+}
+
+
+/* ALAS LILIN */
+
+.candle-base {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120px;
+    height: 15px;
+
+    background: #8d7564;
+
+    border-radius: 50%;
+}
+
+
+/* PETUNJUK */
+
+.candle-hint {
+    margin-top: 45px;
+
+    color: #777;
+    font-size: 13px;
+
+    animation: blinkText 1.5s infinite;
+}
+
+
+/* =====================================
+   HALAMAN 3
+   DOA
+   ===================================== */
+
+.wish-page {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #33251d 0%,
+            #17110e 35%,
+            #050403 75%
+        );
+
+    color: #fff;
+}
+
+.wish-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    position: relative;
+}
+
+
+/* KARTU DOA */
+
+.wish-card {
+    width: 650px;
+    max-width: 95%;
+
+    padding: 45px 50px;
+
+    text-align: center;
+
+    background: rgba(255, 248, 238, 0.96);
+
+    color: #59453b;
+
+    border-radius: 18px;
+
+    border: 1px solid #c6a582;
+
+    box-shadow:
+        0 0 40px rgba(255, 164, 67, 0.12);
+}
+
+
+/* JUDUL */
+
+.wish-card h1 {
+    font-size: 35px;
+    color: #735343;
+}
+
+.small-heart {
+    font-size: 38px;
+    color: #a86b5a;
+
+    margin-bottom: 10px;
+}
+
+
+/* GARIS */
+
+.line {
+    width: 80px;
+    height: 2px;
+
+    background: #bd9675;
+
+    margin: 20px auto;
+}
+
+
+/* PARAGRAF */
+
+.wish-card p {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin: 15px 0;
+}
+
+
+/* PESAN TERAKHIR */
+
+.last-message {
+    font-weight: bold;
+    color: #745044;
+}
+
+
+/* AMIN */
+
+.wish-card h2 {
+    font-size: 19px;
+    color: #735343;
+}
+
+
+/* =====================================
+   LILIN KECIL DI HALAMAN 3
+   ===================================== */
+
+.small-candle {
+    position: absolute;
+
+    left: 50%;
+    top: 35px;
+
+    transform: translateX(-50%);
+
+    width: 60px;
+    height: 90px;
+}
+
+
+/* BADAN */
+
+.small-candle-body {
+    position: absolute;
+
+    bottom: 0;
+    left: 12px;
+
+    width: 36px;
+    height: 55px;
+
+    background: linear-gradient(
+        to right,
+        #d7b899,
+        #fff1dc,
+        #c8a384
+    );
+
+    border-radius: 5px;
+}
+
+
+/* API KECIL */
+
+.small-candle .flame {
+    bottom: 58px;
+
+    width: 25px;
+    height: 38px;
+}
+
+
+/* SUMBU KECIL */
+
+.small-candle .wick {
+    bottom: 53px;
+}
+
+
+/* =====================================
+   ANIMASI
+   ===================================== */
+
+@keyframes flameMove {
+
+    0% {
+        transform: rotate(42deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(48deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(43deg) scale(0.95);
+    }
+}
+
+
+@keyframes blinkText {
+
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================
+   RESPONSIVE HP
+   ===================================== */
+
+@media (max-width: 500px) {
+
+    .envelope {
+        width: 310px;
+        height: 420px;
+    }
+
+    .envelope-front h1 {
+        font-size: 24px;
+    }
+
+    .envelope-back h2 {
+        font-size: 25px;
+    }
+
+    .wish-card {
+        padding: 35px 22px;
+    }
+
+    .wish-card h1 {
+        font-size: 29px;
+    }
+
+    .wish-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+}
